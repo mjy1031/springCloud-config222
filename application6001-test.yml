@@ -1,0 +1,41 @@
+server:
+  port: 6001
+  context-path: /
+
+# 数据源配置
+spring:
+  application:
+    name: service-ticket
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_station
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  thymeleaf:
+    cache: false
+
+# eureka 注册中心配置
+eureka:
+  instance:
+    hostname: localhost #eureka客户端主机实例名称
+    appname: service-ticket #客户端服务名称（可以随意取）
+    instance-id: service-ticket:6001 #客户端实例名称（可以随意取）
+    prefer-ip-address: true #显示ip地址
+  client:
+    service-url:
+      #defaultZone: http://localhost:7001/eureka #eureka的服务器地址（单机）
+      defaultZone: http://eureka7001.wfd360.com:7001/eureka/,http://eureka7002.wfd360.com:7002/eureka/,http://eureka7003.wfd360.com:7003/eureka/ # 集群
+    # 自定义配置参数，假设是实际生产中的微信openid
+    sys:
+      weChat:
+        appid: 1111111111111-default
+# 服务提供者信息
+info:
+  version: v2
+  WeChat: 851298348
+  负责人: 姿势帝
