@@ -1,0 +1,34 @@
+server:
+  port: 9001
+  context-path: /
+
+# 应用名称配置
+spring:
+  application:
+    name: service-zuul
+
+# eureka 注册中心配置
+eureka:
+  instance:
+    hostname: localhost #eureka客户端主机实例名称
+    appname: service-zuul #客户端服务名称（可以随意取）
+    instance-id: service-zuul:9001 #客户端实例名称（可以随意取）
+    prefer-ip-address: true #显示ip地址
+  client:
+    service-url:
+      #defaultZone: http://localhost:7001/eureka #eureka的服务器地址（单机）
+      defaultZone: http://eureka7001.wfd360.com:7001/eureka/,http://eureka7002.wfd360.com:7002/eureka/,http://eureka7003.wfd360.com:7003/eureka/ # 集群
+
+# 服务名称映射
+zuul:
+  ignored-services: "service-lock" # 屏蔽根据服务名称访问的地址,如果写"*",表示屏蔽所有
+  prefix: /wx_851298348 # 请求上下文,即请求前缀
+  routes:
+    ticketServer.serviceId: service-lock
+    ticketServer.path: /sl/**
+
+# 服务提供者信息
+info:
+  version: v2
+  WeChat: 851298348
+  负责人: 姿势帝
