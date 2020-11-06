@@ -1,7 +1,6 @@
-server:
+﻿server:
   port: 6001
   context-path: /
-
 # 数据源配置
 spring:
   application:
@@ -18,7 +17,6 @@ spring:
     show-sql: true
   thymeleaf:
     cache: false
-
 # eureka 注册中心配置
 eureka:
   instance:
@@ -30,15 +28,14 @@ eureka:
     service-url:
       #defaultZone: http://localhost:7001/eureka #eureka的服务器地址（单机）
       defaultZone: http://eureka7001.wfd360.com:7001/eureka/,http://eureka7002.wfd360.com:7002/eureka/,http://eureka7003.wfd360.com:7003/eureka/ # 集群
-  
+
 # 服务提供者信息
 info:
   version: v2
   WeChat: 851298348
   负责人: 姿势帝
-  
-  
-  # 自定义配置参数，假设是实际生产中的微信openid
-    sys:
-      weChat:
-        appid: 1111111111111-test  
+
+# 自定义配置参数
+sys:
+  weChat:
+    appid: 1111111111111-testtest
