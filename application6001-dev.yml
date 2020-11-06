@@ -33,7 +33,7 @@ eureka:
     # 自定义配置参数，假设是实际生产中的微信openid
     sys:
       weChat:
-        appid: 1111111111111-default
+        appid: 1111111111111-dev
 # 服务提供者信息
 info:
   version: v2
